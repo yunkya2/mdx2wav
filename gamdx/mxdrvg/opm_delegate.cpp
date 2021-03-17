@@ -1,10 +1,13 @@
 #include "opm_delegate.h"
+#if 0
 #include "../fmgen/opm.h"
+#endif
 
 extern "C" {
 #include "../mame/ym2151.h"
 }
 
+#if 0
 class OPMFmgen :public OPM_Delegate {
 public:
   OPMFmgen() {}
@@ -70,6 +73,7 @@ private:
 OPM_Delegate *OPM_Delegate::getFmgen() {
   return new OPMFmgen();
 }
+#endif
 
 class OPMMame :public OPM_Delegate {
 public:
