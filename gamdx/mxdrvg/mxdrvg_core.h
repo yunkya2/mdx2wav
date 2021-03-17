@@ -2458,6 +2458,8 @@ static void L0005f8(
 	L00063e();
 	A2 = a2, A1 = a1, A0 = a0, D1 = d1;
 	D0 = D1;
+	goto L000624;
+
 	D0 &= 0x0003;
 	a1_l = (uint32_t *)A1; a0_l = (uint32_t *)A0;
 	D1 >>= 2;
