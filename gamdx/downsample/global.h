@@ -12,12 +12,12 @@
 #endif
 
 #define LPF_ROW_44 441
-ALIGNED(8) static int16 LOWPASS_44[LPF_ROW_44][LPF_COL] = {
+ALIGNED(8) static const int16 LOWPASS_44[LPF_ROW_44][LPF_COL] = {
 	#include "lowpass_44.dat"
 };
 
 #define LPF_ROW_48 96
-ALIGNED(8) static int16 LOWPASS_48[LPF_ROW_48][LPF_COL] = {
+ALIGNED(8) static const int16 LOWPASS_48[LPF_ROW_48][LPF_COL] = {
 	#include "lowpass_48.dat"
 };
 
