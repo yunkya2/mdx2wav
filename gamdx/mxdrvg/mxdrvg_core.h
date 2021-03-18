@@ -2362,6 +2362,7 @@ static void L_SETMDX(
 ) {
 	ULONG d1;
 	UBYTE volatile *a1;
+	UBYTE volatile *a0, *a2;
 
 // L_SETMDX:;
 /*
@@ -2384,11 +2385,20 @@ L0005c4:;
 														move.l  (L002220),d0
 														bra     L0005f8
 */
+	d1 = D1, a0 = A0, a1 = A1, a2 = A2;
+	L00063e();
+	A2 = a2, A1 = a1, A0 = a0, D1 = d1;
+
 	A2 = &G.L002230;
+	G.L001e34 = A1;
+
 	A0 = G.L001e34;
 	G.L002218 = A0;
-	D0 = G.L002220;
-	L0005f8();
+//	D0 = G.L002220;
+//	L0005f8();
+
+	*(A2) = SET;
+	D0 = 0;
 }
 
 
@@ -2399,6 +2409,7 @@ static void L_SETPDX(
 ) {
 	ULONG d1;
 	UBYTE volatile *a1;
+	UBYTE volatile *a0, *a2;
 
 // L_SETPDX:;
 /*
@@ -2420,15 +2431,24 @@ L0005e8:;
 														move.l  a0,(L00221c)
 														move.l  (L002224),d0
 */
+	d1 = D1, a0 = A0, a1 = A1, a2 = A2;
+	L00063e();
+	A2 = a2, A1 = a1, A0 = a0, D1 = d1;
+
 	A2 = &G.L002231;
+	G.L001e38 = A1;
+
 	A0 = G.L001e38;
 	G.L00221c = A0;
-	D0 = G.L002224;
+//	D0 = G.L002224;
 
 /*
 														; fall down
 */
-	L0005f8();
+//	L0005f8();
+
+	*(A2) = SET;
+	D0 = 0;
 }
 
 
@@ -5552,11 +5572,13 @@ L0012cc:;
 
 L0012d0:;
 // checker
+#if 0
 	if ( (ULONG)A0 >= ((ULONG)G.L001e34)+((ULONG)G.L002220) ) {
 //		G.FATALERROR = 0x0012d0;
 //		G.FATALERRORADR = (ULONG)A4;
 		return;
 	}
+#endif
 // checker end
 /*
 														cmp.b   (a0)+,d0
