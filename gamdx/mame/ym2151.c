@@ -1511,6 +1511,8 @@ static void ym2151_state_save_register( YM2151 *chip, device_t *device )
 #endif
 
 
+static YM2151 g_PSG;
+
 /*
 *   Initialize YM2151 emulator(s).
 *
@@ -1525,7 +1527,8 @@ void * ym2151_init(device_t *device, int clock, int rate)
 #if defined(USE_MAME_TIMERS)
 	PSG = auto_alloc(device->machine(), YM2151);
 #else
-	PSG = malloc(sizeof(YM2151));
+//	PSG = malloc(sizeof(YM2151));
+	PSG = &g_PSG;
 #endif
 
 	memset(PSG, 0, sizeof(YM2151));
@@ -1581,7 +1584,7 @@ void ym2151_shutdown(void *_chip)
 #if defined(USE_MAME_TIMERS)
 	auto_free (chip->device->machine(), chip);
 #else
-	free(chip);
+//	free(chip);
 #endif
 
 	if (cymfile)

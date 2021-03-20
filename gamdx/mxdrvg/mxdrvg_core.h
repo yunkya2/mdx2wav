@@ -317,6 +317,7 @@ MXDRVG_EXPORT
 void MXDRVG_End(
 	void
 ) {
+#if 0
 	if ( G.L001e34 ) {
 		free( (void*)G.L001e34 );
 		G.L001e34 = NULL;
@@ -325,6 +326,7 @@ void MXDRVG_End(
 		free( (void*)G.L001e38 );
 		G.L001e38 = NULL;
 	}
+#endif
 	if ( G.L001bac ) {
 		free( (void*)G.L001bac );
 		G.L001bac = NULL;
@@ -7066,6 +7068,7 @@ static int Initialize(
 	G.L002220 = ( mdxbufsize ? mdxbufsize : 0x10000 );
 	G.L002224 = ( pdxbufsize ? pdxbufsize : 0x100000 );
 	G.L001ba8 = 0x600;
+#if 0
 	G.L001e34 = (UBYTE *)malloc( G.L002220 );
 	if ( !G.L001e34 ) {
 		return (!0);
@@ -7078,12 +7081,15 @@ static int Initialize(
 		return (!0);
 	}
 	memset( (void *)G.L001e38, 0, G.L002224 );
+#endif
 	G.L001bac = (UBYTE *)malloc( G.L001ba8 );
 	if ( !G.L001bac ) {
+#if 0
 		free( (void *)G.L001e38 );
 		G.L001e38 = NULL;
 		free( (void *)G.L001e34 );
 		G.L001e34 = NULL;
+#endif
 		return (!0);
 	}
 	memset( (void *)G.L001bac, 0, G.L001ba8 );
